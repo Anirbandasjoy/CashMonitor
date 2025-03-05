@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Folder,
-  Forward,
-  MoreHorizontal,
-  Trash2,
-  type LucideIcon,
-} from "lucide-react";
+import { MoreHorizontal, type LucideIcon } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -24,6 +18,8 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
+import React from "react";
 
 export function NavProjects({
   projects,
@@ -32,6 +28,7 @@ export function NavProjects({
     name: string;
     url: string;
     icon: LucideIcon;
+    items: { title: string; icon: LucideIcon }[];
   }[];
 }) {
   const { isMobile } = useSidebar();
@@ -43,10 +40,10 @@ export function NavProjects({
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
+              <Link href={item.url}>
                 <item.icon />
                 <span>{item.name}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -60,29 +57,32 @@ export function NavProjects({
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
               >
-                <DropdownMenuItem>
-                  <Folder className="text-muted-foreground" />
-                  <span>View Project</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Forward className="text-muted-foreground" />
-                  <span>Share Project</span>
-                </DropdownMenuItem>
+                {item.items.map(
+                  (info, index) =>
+                    index !== item.items.length - 1 && (
+                      <DropdownMenuItem
+                        key={info.title}
+                        className="cursor-pointer"
+                      >
+                        <info.icon className="text-muted-foreground" />
+                        <span>{info.title}</span>
+                      </DropdownMenuItem>
+                    )
+                )}
+
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Trash2 className="text-muted-foreground" />
-                  <span>Delete Project</span>
+                <DropdownMenuItem className="cursor-pointer">
+                  {item.items?.length > 0 &&
+                    React.createElement(
+                      item.items[item.items.length - 1].icon,
+                      { className: "text-muted-foreground" }
+                    )}
+                  <span>{item.items[item.items.length - 1].title}</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>
         ))}
-        <SidebarMenuItem>
-          <SidebarMenuButton className="text-sidebar-foreground/70">
-            <MoreHorizontal className="text-sidebar-foreground/70" />
-            <span>More</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
   );

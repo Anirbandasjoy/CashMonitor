@@ -2,16 +2,17 @@
 
 import * as React from "react";
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
+  Activity,
+  ArrowLeftRight,
+  CreativeCommonsIcon,
+  DollarSign,
+  Info,
+  LayoutDashboard,
+  Moon,
+  Settings,
+  SunMoon,
+  Trash2,
+  User,
 } from "lucide-react";
 
 import {
@@ -29,129 +30,80 @@ import { NavUser } from "./nav-users";
 // This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "Joy das",
+    email: "joy600508@gmail.com",
     avatar: "/avatars/shadcn.jpg",
   },
   teams: [
     {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
+      name: "CashMonitor",
+      logo: DollarSign,
+      plan: "CashMonitor",
     },
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Dashboard",
       url: "#",
-      icon: SquareTerminal,
+      icon: LayoutDashboard,
       isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
     },
     {
-      title: "Models",
+      title: "Income",
       url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      icon: Activity,
+      isActive: true,
     },
     {
-      title: "Documentation",
+      title: "Categories",
       url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      icon: ArrowLeftRight,
+      isActive: true,
     },
   ],
   projects: [
     {
-      name: "Design Engineering",
+      name: "Settings",
       url: "#",
-      icon: Frame,
+      icon: Settings,
+      items: [
+        {
+          title: "Account",
+          icon: User,
+        },
+        {
+          title: "Personal info",
+          icon: Info,
+          url: "#",
+        },
+        {
+          title: "Delete Account",
+          icon: Trash2,
+          url: "#",
+        },
+      ],
     },
     {
-      name: "Sales & Marketing",
+      name: "Themes",
       url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      icon: SunMoon,
+      items: [
+        {
+          title: "Light Mode",
+          icon: Moon,
+          url: "#",
+        },
+        {
+          title: "Dark Mode",
+          icon: SunMoon,
+          url: "#",
+        },
+        {
+          title: "System",
+          icon: CreativeCommonsIcon,
+          url: "#",
+        },
+      ],
     },
   ],
 };
